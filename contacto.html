@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Cuarto de Sara</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="assets/logo.jpg" alt="Logo">
+    </div>
+    <h1>Contacto de El Cuarto de Sara</h1>
+    <div class="search-container">
+        <input type="text" placeholder="Buscar...">
+    </div>
+    <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=100063458204117" target="_blank">
+            <img class="social-icon" src="assets/facebook-icon.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/el_cuarto_de_sara/" target="_blank">
+            <img class="social-icon" src="assets/instagram-icon.png" alt="Instagram">
+        </a>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="contacto">
+        <h1>Contacto</h1>
+        <p>Si tienes preguntas, deseas hacer un pedido especial o necesitas más información, contáctanos a través del siguiente formulario.</p>
+
+        <form action="procesar_contacto.html" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="5" required></textarea>
+
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+
+        <div class="info-contacto">
+            <h2>📍 Información de Contacto</h2>
+            <p>📍 <strong>Ubicación:</strong> Alquería, Bogotá</p>
+            <p>📞 <strong>Teléfono:</strong> 311 2458668</p>
+            <p>📧 <strong>Email:</strong> <a href="mailto:tatis.angelr@gmail.com">tatis.angelr@gmail.com</a></p>
+            <p>🕒 <strong>Horario de atención:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM</p>
+        </div>
+    </section>
+
+    <!-- Sección para mostrar la fecha y el contador de visitas -->
+    <section class="estadisticas">
+        <h2>📊 Estadísticas de Visitas</h2>
+        <p><strong>Fecha y hora actual:</strong> <span id="fechaHora"></span></p>
+        <p><strong>Visitas a esta página:</strong> <span id="contadorVisitas"></span></p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 El Cuarto de Sara</p>
+</footer>
+
+<script>
+    // 🔹 Mostrar fecha y hora en tiempo real
+    function actualizarFechaHora() {
+        let fecha = new Date();
+        let formatoFecha = fecha.toLocaleDateString('es-ES');
+        let formatoHora = fecha.toLocaleTimeString('es-ES');
+        document.getElementById("fechaHora").innerText = formatoFecha + " " + formatoHora;
+    }
+    setInterval(actualizarFechaHora, 1000); // Actualiza cada segundo
+
+    // 🔹 Contador de visitas usando localStorage
+    function contarVisitas() {
+        let visitas = localStorage.getItem("contadorVisitas");
+        visitas = visitas ? parseInt(visitas) + 1 : 1; 
+        localStorage.setItem("contadorVisitas", visitas);
+        document.getElementById("contadorVisitas").innerText = visitas;
+    }
+    contarVisitas();
+</script>
+
+</body>
+</html>
